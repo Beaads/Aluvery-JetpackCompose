@@ -1,8 +1,9 @@
 package com.example.aluvery.ui.components
 
-import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
+import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -12,6 +13,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.aluvery.model.Product
 import com.example.aluvery.sampledata.sampleProducts
+import com.example.aluvery.ui.theme.AluveryTheme
 
 @Composable
 fun ProductSection(
@@ -28,20 +30,18 @@ fun ProductSection(
             fontSize = 20.sp,
             fontWeight = FontWeight(400)
         )
-        Row(
+        LazyRow(
             Modifier
                 .padding(
                     top = 8.dp,
                 )
-                .fillMaxWidth()
-                .horizontalScroll(rememberScrollState()),
-            horizontalArrangement = Arrangement.spacedBy(16.dp)
+                .fillMaxWidth(),
+            horizontalArrangement = Arrangement.spacedBy(16.dp),
+            contentPadding = PaddingValues(horizontal = 16.dp)
         ) {
-            Spacer(Modifier)
-            for (p in products) {
+            items(products) { p ->
                 ProductItem(product = p)
             }
-            Spacer(Modifier)
         }
     }
 }
@@ -49,5 +49,9 @@ fun ProductSection(
 @Preview(showBackground = true)
 @Composable
 fun ProductSectionPreview() {
-    ProductSection("Promoções", products = sampleProducts)
+    AluveryTheme {
+        Surface {
+            ProductSection("Promoções", products = sampleProducts)
+        }
+    }
 }
