@@ -16,7 +16,7 @@ import com.example.aluvery.sampledata.sampleProducts
 import com.example.aluvery.ui.theme.AluveryTheme
 
 @Composable
-fun ProductSection(
+fun ProductsSection(
     title: String,
     products: List<Product>,
     modifier: Modifier = Modifier
@@ -34,7 +34,7 @@ fun ProductSection(
         LazyRow(
             Modifier
                 .padding(
-                    top = 8.dp,
+                    top = 8.dp
                 )
                 .fillMaxWidth(),
             horizontalArrangement = Arrangement.spacedBy(16.dp),
@@ -49,10 +49,10 @@ fun ProductSection(
 
 @Preview(showBackground = true)
 @Composable
-fun ProductSectionPreview() {
+private fun ProductsSectionPreview() {
     AluveryTheme {
         Surface {
-            ProductSection("Promoções", products = sampleProducts)
+            ProductsSection("Promoções", products = sampleProducts)
         }
     }
 }

@@ -1,6 +1,5 @@
 package com.example.aluvery.ui.components
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
@@ -16,27 +15,30 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
-import com.example.aluvery.R
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.datasource.LoremIpsum
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
+import com.example.aluvery.R
 import com.example.aluvery.extensions.toBrazilianCurrency
 import com.example.aluvery.model.Product
 import com.example.aluvery.ui.theme.AluveryTheme
 import java.math.BigDecimal
 
 @Composable
-fun ProductItem(product: Product,
-                modifier: Modifier = Modifier) {
+fun ProductItem(
+    product: Product,
+    modifier: Modifier = Modifier,
+) {
     Surface(
+        modifier,
         shape = RoundedCornerShape(15.dp),
         elevation = 4.dp
     ) {
         Column(
-            modifier
+            Modifier
                 .heightIn(250.dp, 300.dp)
                 .width(200.dp)
         ) {
@@ -55,7 +57,6 @@ fun ProductItem(product: Product,
                     .fillMaxWidth()
             ) {
                 AsyncImage(
-                    // TODO: ajustar imagem do produto
                     model = product.image,
                     contentDescription = null,
                     Modifier
@@ -86,6 +87,7 @@ fun ProductItem(product: Product,
         }
     }
 }
+
 @Preview(showBackground = true)
 @Composable
 private fun ProductItemPreview() {
